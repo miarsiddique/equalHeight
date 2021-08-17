@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>eql height</title>
+	<script src="jquery-1.12.4.min.js"></script>
+	<style type="text/css">
+		ul {
+			padding: 0;
+			list-style: none;
+			margin: 0;
+			/*display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			flex-wrap: wrap;
+			-webkit-flex-wrap: wrap;*/
+			margin-top: 70px;
+			max-width: 1100px;
+			margin: 0px auto;
+		}
+		ul li {
+			width: 20%;
+			box-sizing: border-box;
+			padding: 0 15px;
+			float: left;
+			border: 1px solid blue;
+
+		}
+		ul li p {
+			font-size: 13px;
+		}
+		ul li img {
+			width: 100%;
+		}
+		ul li h3 {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-254.jpg" alt="">
+			<h3 data-match-height="groupName">Amazing Value Every Day Amazing Value Every Day</h3>
+			<p> Items you love at prices that fit your budget. </p>
+		</li>
+		<li><img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-010_1.jpg" alt="">
+			<h3 data-match-height="groupName">Fast &amp; Free Shipping on Oder Over $300* Fast &amp; Free Shipping on Oder Over $300*</h3>
+			<p>Plus, two-day delivery on thousands of items.</p>
+		</li>
+		<li>
+			<img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-250-blue_1.jpg" alt="">
+			<h3 data-match-height="groupName">Expert Customer Service </h3>
+			<p>Our friendly team’s on hand seven days a week.</p>
+		</li>
+		<li><img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-254.jpg" alt="">
+			<h3 data-match-height="groupName">Amazing Value Every Day Amazing Value Every Day</h3>
+			<p> Items you love at prices that fit your budget. </p>
+		</li>
+		<li><img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-010_1.jpg" alt="">
+			<h3 data-match-height="groupName">Fast &amp; Free Shipping on Oder Over $300* Fast &amp; Free Shipping on Oder Over $300*</h3>
+			<p>Plus, two-day delivery on thousands of items.</p>
+		</li>
+		<li>
+			<img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-250-blue_1.jpg" alt="">
+			<h3 data-match-height="groupName">Expert Customer Service </h3>
+			<p>Our friendly team’s on hand seven days a week.</p>
+		</li>
+		<li><img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-254.jpg" alt="">
+			<h3 data-match-height="groupName">Amazing Value Every Day Amazing Value Every Day</h3>
+			<p> Items you love at prices that fit your budget. </p>
+		</li>
+		<li><img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-010_1.jpg" alt="">
+			<h3 data-match-height="groupName">Fast &amp; Free Shipping on Oder Over $300* Fast &amp; Free Shipping on Oder Over $300*</h3>
+			<p>Plus, two-day delivery on thousands of items.</p>
+		</li>
+		<li>
+			<img src="https://mcprod.carrmclean.ca/media/catalog/product/cache/26f043e3f437e58929181dc0a8cff7c3/2/0/20-250-blue_1.jpg" alt="">
+			<h3 data-match-height="groupName">Expert Customer Service </h3>
+			<p>Our friendly team’s on hand seven days a week.</p>
+		</li>
+
+	</ul>
+	<script type="text/javascript">
+		
+		/* $(document).ready(function() {
+
+			var maxHeight = ''; 
+			$.fn.equalHeights = function(){
+				var max_height = 0;
+				$(this).each(function(){
+					max_height = Math.max($(this).height(), max_height);
+				});
+
+				$(this).each(function(){
+					$(this).height(max_height);
+				});
+
+				console.log(max_height);
+			};
+
+			window.addEventListener("orientationchange", function() {					
+				// $('ul li h3').css("height", highestBox+'px');
+				console.log('Hello');
+				$('ul li').equalHeights();
+			}, false);
+			
+			
+			$('ul li h3').equalHeights();
+
+		}); */
+
+
+		var matchHeight = function () {
+	
+			function init() {
+				eventListeners();
+				matchHeight();
+			}
+			
+			function eventListeners(){
+				$(window).on('resize', function() {
+					matchHeight();
+				});
+			}
+			
+			function matchHeight(){
+				var groupName = $('[data-match-height]');
+				var groupHeights = [];
+				
+				groupName.css('min-height', 'auto');
+				
+				groupName.each(function() {
+					groupHeights.push($(this).outerHeight());
+				});
+				
+				var maxHeight = Math.max.apply(null, groupHeights);
+				groupName.css('min-height', maxHeight);
+			};
+			
+			return {
+				init: init
+			};
+			
+		} ();
+
+		$(document).ready(function() {
+			matchHeight.init();
+		});
+
+	</script>
+</body>
+</html>

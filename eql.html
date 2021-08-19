@@ -121,7 +121,7 @@
 		}); */
 
 
-		var matchHeight = function () {
+		/* var matchHeight = function () {
 	
 			function init() {
 				eventListeners();
@@ -156,8 +156,35 @@
 
 		$(document).ready(function() {
 			matchHeight.init();
-		});
+		}); */
 
+		$.fn.sameHeight = function() {
+			var selector = this;
+			var heights = [];
+
+			// Save the heights of every element into an array
+			selector.each(function(){
+				var height = $(this).height();
+				heights.push(height);
+			});
+
+			// Get the biggest height
+			var maxHeight = Math.max.apply(null, heights);
+			// Show in the console to verify
+			console.log(heights,maxHeight);
+
+			// Set the maxHeight to every selected element
+			selector.each(function(){
+				$(this).height(maxHeight);
+			}); 
+		};
+
+		$('ul li h3').sameHeight();
+
+		$(window).resize(function(){
+			// Do it when the window resizes too
+			$('ul li h3').sameHeight();
+		});
 	</script>
 </body>
 </html>

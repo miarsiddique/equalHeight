@@ -91,72 +91,8 @@
 		</li>
 
 	</ul>
-	<script type="text/javascript">
-		
-		/* $(document).ready(function() {
-
-			var maxHeight = ''; 
-			$.fn.equalHeights = function(){
-				var max_height = 0;
-				$(this).each(function(){
-					max_height = Math.max($(this).height(), max_height);
-				});
-
-				$(this).each(function(){
-					$(this).height(max_height);
-				});
-
-				console.log(max_height);
-			};
-
-			window.addEventListener("orientationchange", function() {					
-				// $('ul li h3').css("height", highestBox+'px');
-				console.log('Hello');
-				$('ul li').equalHeights();
-			}, false);
-			
-			
-			$('ul li h3').equalHeights();
-
-		}); */
-
-
-		/* var matchHeight = function () {
 	
-			function init() {
-				eventListeners();
-				matchHeight();
-			}
-			
-			function eventListeners(){
-				$(window).on('resize', function() {
-					matchHeight();
-				});
-			}
-			
-			function matchHeight(){
-				var groupName = $('[data-match-height]');
-				var groupHeights = [];
-				
-				groupName.css('min-height', 'auto');
-				
-				groupName.each(function() {
-					groupHeights.push($(this).outerHeight());
-				});
-				
-				var maxHeight = Math.max.apply(null, groupHeights);
-				groupName.css('min-height', maxHeight);
-			};
-			
-			return {
-				init: init
-			};
-			
-		} ();
-
-		$(document).ready(function() {
-			matchHeight.init();
-		}); */
+	<script type="text/javascript">
 
 		$.fn.sameHeight = function() {
 			var selector = this;
